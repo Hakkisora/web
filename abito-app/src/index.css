@@ -124,25 +124,6 @@ body {
   margin-bottom: 36px;
 }
 
-.content-side_list-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.content-side_list-item--title {
-  margin-top: 7px;
-  margin-bottom: 5px;
-  font-size: 14px;
-  line-height: 16px;
-}
-
-.content-side_list-item--text {
-  font-size: 14px;
-  line-height: 16px;
-  margin: 0;
-}
-
 .content-side_footer {
   display: flex;
   flex-direction: column;
@@ -169,6 +150,10 @@ body {
 .content-product_operatioin {
   flex-basis: 50%;
   min-width: 320px;
+}
+
+.content-product_img {
+  width: 100%
 }
 
 .content-product_title,

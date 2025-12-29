@@ -1,33 +1,33 @@
-import { Card } from "../components/Card/Card"
-import { ContentSide } from "../components/ContentSide/ContentSide.jsx"
+import { useParams } from "react-router-dom"
+import { ContentSide } from "../components/ContentSide/ContentSide"
+import { sideArray } from "../constants"
 import { useOutletContext } from "react-router-dom"
-import { sideArray } from "../constants.js"
 
-export const Home = () => {
+export const Product = () => {
 
     const { products } = useOutletContext()
+    const { id } = useParams();
+    const findeProduct = products.find(item => item.id === +id);
 
     return (
-        <>
-            <section className="content">
-                <div className="container">
+        <section className="content">
+            <div className="container">
+
+                {findeProduct ?
                     <div className="content-box">
-                        <div className="content-main">
-                            <h2 className="content-box_title">Рекомендации для вас</h2>
-                            <div className="content-box_cards">
-                                {
-                                    products.map(card => (
-                                        <Card
-                                            key={card.id}
-                                            id={card.id}
-                                            title={card.title}
-                                            price={card.price}
-                                            address={card.address}
-                                            date={card.date}
-                                            img={card.img}
-                                        />
-                                    ))
-                                }
+                        <div className="content-product">
+                            <div className="content-product_info">
+                                <h2 className="content-product_title">{findeProduct.title}</h2>
+                                <img src={findeProduct.img} alt="good" className="content-product_img" />
+
+                                <p className="content-product_text">
+                                    {findeProduct.discription}
+                                </p>
+                            </div>
+                            <div className="content-product_operatioin">
+                                <h2 className="content-product_price">{findeProduct.price}</h2>
+
+                                <button className="btn btn-primary btn-large">Показать телефон</button>
                             </div>
                         </div>
 
@@ -57,8 +57,11 @@ export const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </>
+                    :
+                    <h2>Нихера не найдено</h2>
+                }
+
+            </div>
+        </section>
     )
 }
